@@ -1,14 +1,17 @@
 <?php
 
-use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\Api\ProductController;
 
+
+// PAGES ROUTES
 Route::get('/', [PageController::class, 'homepage'])->name('homepage');
 Route::get('/products', [PageController::class, 'productPage'])->name('products');
 Route::get('/products/{id}', [PageController::class, 'getProduct'])->name('productDetails');
 
-
+// API ROUTES
 Route::prefix('api')->group(function () {
     // Showing all suppliers
     Route::get('/suppliers', [ProductController::class, 'getSuppliers']);
@@ -25,3 +28,7 @@ Route::prefix('api')->group(function () {
     // Deleting product
     Route::delete('/products/{id}', [ProductController::class, 'deleteProduct']);
 });
+
+
+// EXPORT ROUTE
+Route::get('/export-csv/{name}', [ExportController::class, 'exportCsv']);
