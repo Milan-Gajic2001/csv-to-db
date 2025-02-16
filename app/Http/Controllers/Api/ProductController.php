@@ -42,4 +42,11 @@ class ProductController extends Controller
         $suppliersProducts->each(fn($product) => $product->delete());
         return response()->json(['message' => 'Supplier deleted successfully'], 200);
     }
+
+    // Get all products
+    public function getAllProducts()
+    {
+        $products = Product::all();
+        return response()->json($products);
+    }
 }
