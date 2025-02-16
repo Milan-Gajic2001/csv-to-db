@@ -15,4 +15,20 @@ class ProductController extends Controller
 
         return response()->json($supplierNames);
     }
+
+    public function updateName($name, Request $request)
+    {
+        $supplierRows = Product::where('supplier_name', $name)->get();
+
+        if (!$supplierRows) {
+            return response()->json(['message' => 'Supplier not found'], 404);
+        }
+
+        foreach ($supplierRows as $row) {
+            $row->supplier_name = $request->input('new_name');
+            $row->save();
+        }
+
+        return redirect()->route('homepage')->with('success', 'Supplier name successfully updated');
+    }
 }
