@@ -12,4 +12,6 @@ Route::prefix('api')->group(function () {
     Route::get('/suppliers', [ProductController::class, 'getSuppliers']);
     // Change suppliers name
     Route::patch('/suppliers/{name}/new_name', [ProductController::class, 'updateName']);
+    // Delete supplier and his products
+    Route::delete('/suppliers/{name}', [ProductController::class, 'deleteSupplier']);
 });

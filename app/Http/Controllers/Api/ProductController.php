@@ -29,6 +29,17 @@ class ProductController extends Controller
             $row->save();
         }
 
-        return redirect()->route('homepage')->with('success', 'Supplier name successfully updated');
+        return response()->json(['message' => 'Suppliers name updated successfully'], 200);
+    }
+
+    public function deleteSupplier($name)
+    {
+        $suppliersProducts = Product::where('supplier_name', $name)->get();
+        if ($suppliersProducts->isEmpty()) {
+            return response()->json(['message' => 'No suppliers found with the given name'], 404);
+        }
+
+        $suppliersProducts->each(fn($product) => $product->delete());
+        return response()->json(['message' => 'Supplier deleted successfully'], 200);
     }
 }

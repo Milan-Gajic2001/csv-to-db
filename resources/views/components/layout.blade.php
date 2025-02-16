@@ -9,9 +9,6 @@
 </head>
 
 <body>
-    @if (session()->has('success'))
-        <p>{{ session('success') }}</p>
-    @endif
     {{ $slot }}
 </body>
 
