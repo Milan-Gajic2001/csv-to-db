@@ -14,4 +14,17 @@ class PageController extends Controller
 
         return view('homepage', ['supplierNames' => $supplierNames]);
     }
+
+    public function productPage()
+    {
+        $products = Product::all();
+        return view('products', ['products' => $products]);
+    }
+
+    public function getProduct($id)
+    {
+        $product = Product::find($id);
+
+        return view('productDetails', ['product' => $product]);
+    }
 }
