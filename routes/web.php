@@ -22,4 +22,6 @@ Route::prefix('api')->group(function () {
     Route::get('/suppliers/name/{name}', [ProductController::class, 'getSupplierProducts']);
     // Change product data
     Route::patch('/products/{id}', [ProductController::class, 'updateRow']);
+    // Deleting product
+    Route::delete('/products/{id}', [ProductController::class, 'deleteProduct']);
 });
