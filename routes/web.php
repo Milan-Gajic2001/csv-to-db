@@ -16,4 +16,6 @@ Route::prefix('api')->group(function () {
     Route::delete('/suppliers/{name}', [ProductController::class, 'deleteSupplier']);
     // Show all products from db
     Route::get('/products', [ProductController::class, 'getAllProducts']);
+    // Show all products from specific supplier
+    Route::get('/suppliers/name/{name}', [ProductController::class, 'getSupplierProducts']);
 });
