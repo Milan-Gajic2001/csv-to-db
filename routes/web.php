@@ -10,4 +10,6 @@ Route::get('/', [PageController::class, 'homepage'])->name('homepage');
 Route::prefix('api')->group(function () {
     // Showing all suppliers
     Route::get('/suppliers', [ProductController::class, 'getSuppliers']);
+    // Change suppliers name
+    Route::patch('/suppliers/{name}/new_name', [ProductController::class, 'updateName']);
 });
