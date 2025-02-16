@@ -58,4 +58,18 @@ class ProductController extends Controller
         }
         return response()->json($supplierProducts);
     }
+    // Update row data (product data)
+    public function updateRow($id, Request $request)
+    {
+        $product = Product::find($id);
+
+        if (!$product) {
+            return response()->json(['message' => 'Supplier not found'], 404);
+        }
+
+        // Update supplier data with the request input
+        $product->update($request->all());
+
+        return response()->json(['message' => 'Supplier data updated successfully']);
+    }
 }
