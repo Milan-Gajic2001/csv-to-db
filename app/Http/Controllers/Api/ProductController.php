@@ -49,4 +49,13 @@ class ProductController extends Controller
         $products = Product::all();
         return response()->json($products);
     }
+
+    public function getSupplierProducts($name)
+    {
+        $supplierProducts = Product::where('supplier_name', $name)->get();
+        if ($supplierProducts->isEmpty()) {
+            return response()->json(['message' => 'No suppliers found with the given name'], 404);
+        }
+        return response()->json($supplierProducts);
+    }
 }

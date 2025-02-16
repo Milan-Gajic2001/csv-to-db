@@ -1,6 +1,7 @@
 <x-layout>
     @foreach ($supplierNames as $supplier)
         <h2>{{ $supplier }}</h2>
+        <a href="/api/suppliers/name/{{ $supplier }}">Suppliers Products</a>
         <br>
         <form action="/api/suppliers/{{ $supplier }}/new_name" method="POST">
             @method('PATCH')
