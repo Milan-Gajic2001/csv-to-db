@@ -72,4 +72,16 @@ class ProductController extends Controller
 
         return response()->json(['message' => 'Supplier data updated successfully']);
     }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+
+        if (!$product) {
+            return response()->json(['message' => 'Product not found']);
+        }
+
+        $product->delete();
+        return response()->json(['message' => 'Product deleted successfully']);
+    }
 }
