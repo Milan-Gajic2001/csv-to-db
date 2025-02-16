@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    <nav>
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+    </nav>
     {{ $slot }}
 </body>
 
